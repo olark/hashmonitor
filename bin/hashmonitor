@@ -1,0 +1,26 @@
+#!/usr/bin/env coffee
+
+HashMonitor = require('../lib/hashmonitor').HashMonitor
+
+DEFAULT_MILLISECONDS_FOR_SINGLE_STATS_WINDOW = 30 * 1000
+
+# Initialize the HashMonitor collector that will contain all the
+# parsed log lines and calculated statistics.
+monitor = new HashMonitor()
+
+# Listen for data on standard input (default input for log lines).
+# TODO: add other input options
+process.stdin.resume()
+process.stdin.setEncoding('utf8')
+process.stdin.on 'data', (line) ->
+  monitor.parse(line)
+
+# Periodically output the statistics for this monitor as JSON dictionaries
+# so that other scripts can send these stats into other systems.
+setInterval(
+  ->
+    # TODO: add other output options
+    console.log(monitor.calculate())
+    monitor.reset()
+  , DEFAULT_MILLISECONDS_FOR_SINGLE_STATS_WINDOW
+  )
