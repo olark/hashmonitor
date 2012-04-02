@@ -1,6 +1,7 @@
 #!/usr/bin/env coffee
 
 HashMonitor = require('../lib/hashmonitor').HashMonitor
+HttpAccessLogParser = require('../lib/inputs/httpaccess').HttpAccessLogParser
 
 DEFAULT_MILLISECONDS_FOR_SINGLE_STATS_WINDOW = 30 * 1000
 
@@ -8,11 +9,22 @@ DEFAULT_MILLISECONDS_FOR_SINGLE_STATS_WINDOW = 30 * 1000
 # parsed log lines and calculated statistics.
 monitor = new HashMonitor()
 
+# Keep a list of pre-parsers
+preParsers = []
+
+# Parse most HTTP log formats into plaintext strings.  This should
+# be safe for non-HTTP log lines, but probably should make this configurable
+# instead configurat
+if '--parse-http-access' in process.argv
+  preParsers.push(new HttpAccessLogParser())
+
 # Listen for data on standard input (default input for log lines).
 # TODO: add other input options
 process.stdin.resume()
 process.stdin.setEncoding('utf8')
 process.stdin.on 'data', (line) ->
+  for parser in preParsers
+    line = parser.parse(line)
   monitor.parse(line)
 
 # Periodically output the statistics for this monitor as JSON dictionaries
