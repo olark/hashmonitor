@@ -2,7 +2,7 @@
 
 Distribution = require('./stats').Distribution
 
-HASHTAG_REGEX = /\#(\w[\w\d_]+)(?:\=(\-?\d+(?:\.\d+)?))?/g
+HASHTAG_REGEX = /\#([a-zA-Z][\w\d_]+)(?:(?:[\s$]+)|\=(\-?\d+(?:\.\d+)?))/g
 
 class HashMonitor
 
