@@ -40,6 +40,9 @@ exports["Basic distributions parse + calculate properly"] = (assert, done) ->
     done()
 
 # Map CommonJS async test functions to the signature required by nodeunit.
-for own desc, callback of exports
-  exports[desc] = (test) ->
-    callback(test, () -> test.done())
+maptest = (description) ->
+  cjstest = exports[description]
+  exports[description] = (test) ->
+    cjstest(test, -> test.done())
+for own description of exports
+  maptest(description)
