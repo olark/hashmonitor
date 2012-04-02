@@ -86,6 +86,24 @@ exports["Invalid hashtags are skipped"] = (assert, done) ->
 
     done()
 
+exports["Can detect hashtags at the end of the line"] = (assert, done) ->
+
+  # Parse a bunch of lines.
+  monitor = new HashMonitor()
+  monitor.parse("zippy #foo")
+  monitor.parse("fuzzy #foo")
+
+  # Since the monitor runs asynchronously, we wait for the next event tick
+  # to see the results.
+  process.nextTick ->
+
+    stats = monitor.calculate()
+
+    assert.equals(stats.foo?, true, "expected to have metrics for #foo")
+    assert.equals(stats.foo.count, 2)
+
+    done()
+
 # Map CommonJS async test functions to the signature required by nodeunit.
 maptest = (description) ->
   cjstest = exports[description]
