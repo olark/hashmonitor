@@ -6,8 +6,10 @@ HashMonitor is a simple way to turn your logs into metrics by using
 ## How does it work?
 
 By default, HashMonitor **reads text lines from stdin**, and every 30 seconds
-**writes JSON statistics to stdout**. You can pipe this JSON output into your
-favorite stats dashboard (tinyfeedback, statsd, etc) for easy visualization.
+**writes JSON statistics to stdout**. You can pipe this JSON output into:
+
+* your favorite stats dashboard (tinyfeedback, statsd, graphite, etc)
+* your favorite alerting tool (pagerduty, nagios, etc)
 
 ### Example: counting warning events
 
