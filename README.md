@@ -3,6 +3,15 @@
 HashMonitor is a simple way to turn your logs into metrics by using
 **hashtags** in your log messages.
 
+**Log like this...**
+
+    log("something #weird happened")
+    log("something #weird with #networking happened")
+
+**You'll get metrics like this...**
+
+    { warn: { count: 3 }, networking: { count: 1 } }
+
 ## How does it work?
 
 By default, HashMonitor **reads text lines from stdin**, and every 30 seconds
