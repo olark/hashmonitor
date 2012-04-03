@@ -4,9 +4,14 @@
     "author": "Matt Pizzimenti",
     "description": "Turn logs into metrics like a boss",
     "repository": {
-        "url": "https://github.com/olark/hashmonitor"
+        "type": "git",
+        "url": "git://github.com/olark/hashmonitor.git"
     },
+    "homepage": "https://github.com/olark/hashmonitor",
     "main": "lib/hashmonitor",
+    "bin": {
+        "hashmonitor": "./bin/hashmonitor"
+    },
     "dependencies": {
         "coffee-script": "*"
     },
