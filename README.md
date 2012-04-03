@@ -53,15 +53,11 @@ Easiest is installing hashmonitor globally:
 
     $ sudo npm install -g hashmonitor
 
-...you may also need to install coffee-script if you don't have it:
-
-    $ sudo npm install -g coffee-script
-
 Then just run the HashMonitor using the default stdin/stdout:
 
     $ hashmonitor
 
-Once you are here, just type some fake log messages in:
+Once you are here, just type some fake log messages into stdin:
 
     hello #world
     goodnight #moon

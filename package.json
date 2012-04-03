@@ -1,0 +1,19 @@
+{
+    "name": "hashmonitor",
+    "version": "0.0.1",
+    "author": "Matt Pizzimenti",
+    "description": "Turn logs into metrics like a boss",
+    "repository": {
+        "url": "https://github.com/olark/hashmonitor"
+    },
+    "main": "lib/hashmonitor",
+    "dependencies": {
+        "coffee-script": "*"
+    },
+    "devDependencies": {
+        "nodeunit": "*"
+    },
+    "scripts": {
+        "prepublish": "coffee -c lib"
+    }
+}
