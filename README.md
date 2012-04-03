@@ -91,3 +91,29 @@ the distribution of these values:
          max: 25 } }
 
 There ya go Boss!
+
+## How can I use HashMonitor to monitor my logs in {my favorite language}?
+
+The easiest way to pipe logfile over stdin into HashMonitor.  Simple example:
+
+    tail -F /var/log/my-service.log | hashmonitor
+
+...this will output JSON statistics about your hashtags every 30 seconds.
+
+## How can I use HashMonitor to monitor browser-side Javascript?
+
+HashMonitor has built-in HTTP access log parsing. You can slam logs into
+your favorite server (nginx, lighty, express, etc) with some simple Javascript:
+
+    function myLogger(message) {
+      (new Image).src =
+        '//log.example.com/?hashmonitor=' +
+        encodeURIComponent(message)
+    }
+
+...hashmonitor will parse the "hashmonitor" query argument automatically:
+
+    tail -F access.log | hashmonitor --parse-http-access
+
+...and you'll still see JSON statistics output for your hashtags every 30
+seconds :)
