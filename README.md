@@ -10,7 +10,7 @@ HashMonitor is a simple way to turn your logs into metrics by using
 
 **You'll get metrics like this...**
 
-    { warn: { count: 3 }, networking: { count: 1 } }
+    { weird: { count: 2 }, networking: { count: 1 } }
 
 ## How does it work?
 
@@ -25,7 +25,7 @@ By default, HashMonitor **reads text lines from stdin**, and every 30 seconds
 For example, you could keep track of warnings in your application by simply
 logging with a `#warn` hashtag:
 
-    log("something weird happened #warn")
+    log("something bad happened #warn")
     log("something odd happened #warn")
     log("something strange happened #warn")
 
