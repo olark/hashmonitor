@@ -6,11 +6,16 @@ HashMonitor is a simple way to turn your logs into metrics by using
 **Log like this...**
 
     log("something #weird happened")
-    log("something #weird with #networking happened")
+    log("something #weird with #networking took #load_seconds=3")
+    log("something #weird with #networking took #load_seconds=2")
 
 **You'll get metrics like this...**
 
-    { weird: { count: 2 }, networking: { count: 1 } }
+    {
+        weird: { count: 3 },
+        networking: { count: 2 },
+        seconds: { count: 2, mean: 2.5, median: 3, ... },
+    }
 
 ## How does it work?
 
