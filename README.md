@@ -131,3 +131,8 @@ your favorite server (nginx, lighty, express, etc) with some simple Javascript:
 
 ...and you'll still see JSON statistics output for your hashtags every 30
 seconds :)
+
+## References
+
+* original [blog post](http://www.olark.com/spw/2012/03/dont-break-the-internet-with-your-javascript/)
+* JSConf [slides](http://speakerdeck.com/u/mjpizz/p/monitor-like-a-boss)
