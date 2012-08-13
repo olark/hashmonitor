@@ -12,11 +12,16 @@ run = ->
   # Keep a list of pre-parsers
   preParsers = []
 
+  indent = null
+
   # Parse most HTTP log formats into plaintext strings.  This should
   # be safe for non-HTTP log lines, but probably should make this configurable
   # instead configurat
   if '--parse-http-access' in process.argv
     preParsers.push(new HttpAccessLogParser())
+
+  if '--pretty' in process.argv
+    indent = 4
 
   # Listen for data on standard input (default input for log lines).
   # TODO: add other input options
@@ -32,7 +37,7 @@ run = ->
   setInterval(
     ->
       # TODO: add other output options
-      console.log(monitor.calculate())
+      console.log(JSON.stringify(monitor.calculate(), null, indent))
       monitor.reset()
     , DEFAULT_MILLISECONDS_FOR_SINGLE_STATS_WINDOW
     )
