@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/olark/hashmonitor.png)](http://travis-ci.org/olark/hashmonitor)
 # HashMonitor: Turn Logs Into Metrics Like A Boss
 
 HashMonitor is a simple way to turn your logs into metrics by using
