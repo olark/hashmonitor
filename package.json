@@ -1,6 +1,6 @@
 {
     "name": "hashmonitor",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "Matt Pizzimenti",
     "description": "Turn logs into metrics like a boss",
     "repository": {
