@@ -13,7 +13,7 @@
         "hashmonitor": "./bin/hashmonitor"
     },
     "dependencies": {
-        "coffee-script": "*"
+        "coffee-script": "1.4.0"
     },
     "devDependencies": {
         "nodeunit": "*"
